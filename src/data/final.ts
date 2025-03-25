@@ -1,4 +1,6 @@
-export const words = {
+import { WordsMapping, NumbersArray, NumberMapping } from "./types";
+
+export const words: WordsMapping = {
   ha: "ሀ",
   hu: "ሁ",
   hi: "ሂ",
@@ -20,7 +22,7 @@ export const words = {
   Hu: "ሑ",
   Hi: "ሒ",
   HA: "ሓ",
-  HE: "ሔ",
+  He: "ሔ",
   H: "ሕ",
   Ho: "ሖ",
   Hwa: "ሗ",
@@ -126,7 +128,7 @@ export const words = {
   Xe: "ኀ",
   Xu: "ኁ",
   Xi: "ኂ",
-  XA: "ኃ",
+  Xa: "ኃ",
   XE: "ኄ",
   X: "ኅ",
   Xo: "ኆ",
@@ -150,12 +152,12 @@ export const words = {
   nyo: "ኞ",
   nywa: "ኟ",
 
-  ae: "አ",
+  a: "አ",
   au: "ኡ",
-  ai: "ኢ",
+  e: "ኢ",
   aa: "ኣ",
   aE: "ኤ",
-  a: "እ",
+  ae: "እ",
   ao: "ኦ",
   awa: "ኧ",
 
@@ -188,7 +190,7 @@ export const words = {
   Au: "ዑ",
   Ai: "ዒ",
   Aa: "ዓ",
-  AE: "ዔ",
+  E: "ዔ",
   A: "ዕ",
   Ao: "ዖ",
 
@@ -264,23 +266,23 @@ export const words = {
   Go: "ጞ",
   Gwa: "ጟ",
 
-  teTe: "ጠ",
-  tuTe: "ጡ",
-  tiTe: "ጢ",
-  taTe: "ጣ",
-  tETe: "ጤ",
-  tTe: "ጥ",
-  toTe: "ጦ",
-  twaTe: "ጧ",
+  Te: "ጠ",
+  Tu: "ጡ",
+  Ti: "ጢ",
+  Ta: "ጣ",
+  TE: "ጤ",
+  T: "ጥ",
+  To: "ጦ",
+  Twa: "ጧ",
 
-  cheChe: "ጨ",
-  chuChe: "ጩ",
-  chiChe: "ጪ",
-  chaChe: "ጫ",
-  chEChe: "ጬ",
-  cChe: "ጭ",
-  choChe: "ጮ",
-  chwaChe: "ጯ",
+  Che: "ጨ",
+  Chu: "ጩ",
+  Chi: "ጪ",
+  Cha: "ጫ",
+  ChE: "ጬ",
+  C: "ጭ",
+  Cho: "ጮ",
+  Chwa: "ጯ",
 
   pe: "ጰ",
   pu: "ጱ",
@@ -318,20 +320,18 @@ export const words = {
   fo: "ፎ",
   fwa: "ፏ",
 
-  pepe: "ፐ",
-  pupe: "ፑ",
-  pipe: "ፒ",
-  pape: "ፓ",
-  pEpe: "ፔ",
-  ppe: "ፕ",
-  pope: "ፖ",
-  pwape: "ፗ",
-};
+  Pe: "ፐ",
+  Pu: "ፑ",
+  Pi: "ፒ",
+  Pa: "ፓ",
+  PE: "ፔ",
+  P: "ፕ",
+  Po: "ፖ",
+  Pwa: "ፗ",
 
-export const specialLetters = {
   qwo: "ቈ",
   qwi: "ቊ",
-  qwa: "ቋ",
+  Qwa: "ቋ",
   qwe: "ቌ",
   qw: "ቍ",
   QWo: "ቘ",
@@ -346,7 +346,7 @@ export const specialLetters = {
   xw: "ኍ",
   kwo: "ኰ",
   kwi: "ኲ",
-  kwa: "ኳ",
+  Kwa: "ኳ",
   kwe: "ኴ",
   kw: "ኵ",
   KWo: "ዀ",
@@ -356,7 +356,7 @@ export const specialLetters = {
   KW: "ዅ",
   gwo: "ጐ",
   gwi: "ጒ",
-  gwa: "ጓ",
+  GWa: "ጓ",
   gwe: "ጔ",
   gw: "ጕ",
   s7o: "ፘ",
@@ -364,16 +364,19 @@ export const specialLetters = {
   s7a: "ፚ",
 };
 
-export const numbers = {
-  1: "፩",
-  2: "፪",
-  3: "፫",
-  4: "፬",
-  5: "፭",
-  6: "፮",
-  7: "፯",
-  8: "፰",
-  9: "፱",
+export const numbers: NumbersArray = [
+  "፩",
+  "፪",
+  "፫",
+  "፬",
+  "፭",
+  "፮",
+  "፯",
+  "፰",
+  "፱",
+];
+
+export const underHundred: NumberMapping = {
   10: "፲",
   20: "፳",
   30: "፴",
@@ -383,6 +386,12 @@ export const numbers = {
   70: "፸",
   80: "፹",
   90: "፺",
+};
+
+export const overHundred: NumberMapping = {
   100: "፻",
   1000: "፼",
+  10000: "፼፲",
+  100000: "፼፻",
+  1000000: "፼፼",
 };
