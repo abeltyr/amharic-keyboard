@@ -13,7 +13,8 @@
     "build": "rollup -c --bundleConfigAsCjs",
     "dev": "rollup -c -w --bundleConfigAsCjs",
     "test": "jest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "export-inverse-mapping": "ts-node scripts/exportInverseMapping.ts"
   },
   "keywords": [
     "webgl",
@@ -40,6 +41,7 @@
     "rollup": "4.37.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "ts-jest": "29.3.0",
+    "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "typescript": "5.8.2"
   }
