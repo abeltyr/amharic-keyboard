@@ -1,6 +1,6 @@
 import { isVowel } from "./isVowel";
 import { translateNumberToAmharic } from "./numberToAmharic";
-import { words } from "@/words/collection";
+import { words, reverseWords } from "@/words/collection";
 
 /**
  * Translates English text to Amharic using the mapping in final.ts
@@ -90,9 +90,10 @@ export function translateToAmharic(text: string): { en: string; am: string } {
 
         if (depth === 0) {
           const valueData = words[fetchingLetter];
-          if (valueData) console.log("depth", depth, amharicLetter, valueData);
-          amharicLetter += valueData;
-          break;
+          if (valueData) {
+            amharicLetter += valueData;
+            break;
+          }
         }
       }
     } else if (" " === fetchingLetter) {
@@ -108,5 +109,33 @@ export function translateToAmharic(text: string): { en: string; am: string } {
   return {
     en: text,
     am: amharicLetter,
+  };
+}
+
+/**
+ * Translates Amharic text to English using the reverseWords mapping
+ * @param text The Amharic text to translate
+ * @returns An object containing both the original Amharic text and its English translation
+ */
+export function translateToEnglish(text: string): { am: string; en: string } {
+  if (!text) {
+    return { am: "", en: "" };
+  }
+
+  let englishText = "";
+
+  for (let i = 0; i < text.length; i++) {
+    const amharicChar = text[i];
+    const englishChar = reverseWords[amharicChar];
+    if (englishChar) {
+      englishText += englishChar;
+    } else {
+      englishText += amharicChar; // If no mapping found, keep the original character
+    }
+  }
+
+  return {
+    am: text,
+    en: englishText,
   };
 }
