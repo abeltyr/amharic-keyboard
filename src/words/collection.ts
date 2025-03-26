@@ -1,4 +1,4 @@
-import { WordsMapping, NumbersArray, NumberMapping } from "@/types/shared";
+import { WordsMapping, NumbersArray, NumberMapping } from "../types/shared";
 import amEn from "@/words/values/am-en.json";
 import enAm from "@/words/values/en-am.json";
 import numberValue from "@/words/values/number.json";
