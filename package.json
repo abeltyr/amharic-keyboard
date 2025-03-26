@@ -1,8 +1,8 @@
 {
-  "name": "gl-layer",
+  "name": "amharic-keyboard",
   "version": "0.1.0",
   "type": "module",
-  "description": "A lightweight WebGL setup layer that simplifies renderer management, uniform handling, and cleanup.",
+  "description": "A TypeScript library for translating English text to Amharic, with support for characters, words, and numbers.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -17,17 +17,17 @@
     "export-inverse-mapping": "ts-node scripts/exportInverseMapping.ts"
   },
   "keywords": [
-    "webgl",
-    "shader",
-    "renderer",
-    "uniforms",
-    "graphics",
-    "canvas",
-    "GLSL"
+    "amharic",
+    "keyboard",
+    "translation",
+    "ethiopian",
+    "language",
+    "text-conversion",
+    "i18n"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/abeltyr/gl-layer"
+    "url": "https://github.com/abeltyr/amharic-keyboard"
   },
   "author": "Abel Lamesgen <abeltyr@gmail.com>",
   "license": "MIT",
