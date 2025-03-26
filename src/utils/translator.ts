@@ -13,6 +13,7 @@ export function translateToAmharic(text: string): { en: string; am: string } {
   }
 
   let i = 0;
+  let amharicLetterCount = 0;
   let amharicLetter = "";
 
   while (i < text.length) {
@@ -30,9 +31,12 @@ export function translateToAmharic(text: string): { en: string; am: string } {
       amharicLetter += val;
     } else if (i > 0 && isVowel(text[i])) {
       // Try combinations of up to 4 preceding consonants with the current vowel
-      for (let depth = 2; depth >= 0; depth--) {
+      for (let depth = 3; depth >= 0; depth--) {
         if (
-          depth === 2 &&
+          depth === 3 &&
+          text[i - 1] != " " &&
+          text[i - 2] != " " &&
+          text[i - 3] != " " &&
           text[i - 1] &&
           text[i - 2] &&
           text[i - 3] &&
@@ -40,30 +44,56 @@ export function translateToAmharic(text: string): { en: string; am: string } {
           !isVowel(text[i - 2]) &&
           !isVowel(text[i - 3])
         ) {
-          fetchingLetter = text[i - 3] + text[i - 2] + text[i - 1] + text[i];
-          amharicLetter = amharicLetter.slice(0, i - 3) + words[fetchingLetter];
-          break;
+          let fetchingLetter =
+            text[i - 3] + text[i - 2] + text[i - 1] + text[i];
+          const valueData = words[fetchingLetter];
+          if (valueData) {
+            amharicLetter =
+              amharicLetter.slice(0, amharicLetterCount - 3) + valueData;
+            break;
+          }
+        }
+
+        if (
+          depth === 2 &&
+          text[i - 1] &&
+          text[i - 2] &&
+          text[i - 1] != " " &&
+          text[i - 2] != " " &&
+          !isVowel(text[i - 1]) &&
+          !isVowel(text[i - 2])
+        ) {
+          let fetchingLetter = text[i - 2] + text[i - 1] + text[i];
+          const valueData = words[fetchingLetter];
+          if (valueData) {
+            amharicLetter =
+              amharicLetter.slice(0, amharicLetterCount - 2) + valueData;
+            break;
+          }
         }
 
         if (
           depth === 1 &&
           text[i - 1] &&
-          text[i - 2] &&
-          !isVowel(text[i - 1]) &&
-          !isVowel(text[i - 2])
+          text[i - 1] != " " &&
+          !isVowel(text[i - 1])
         ) {
-          fetchingLetter = text[i - 2] + text[i - 1] + text[i];
-          amharicLetter = amharicLetter.slice(0, i - 2) + words[fetchingLetter];
-          break;
+          let fetchingLetter = text[i - 1] + text[i];
+          const valueData = words[fetchingLetter];
+
+          if (valueData) {
+            amharicLetter =
+              amharicLetter.slice(0, amharicLetterCount - 1) + valueData;
+            break;
+          }
         }
 
-        if (depth === 0 && text[i - 1] && !isVowel(text[i - 1])) {
-          fetchingLetter = text[i - 1] + text[i];
-          amharicLetter = amharicLetter.slice(0, i - 1) + words[fetchingLetter];
+        if (depth === 0) {
+          const valueData = words[fetchingLetter];
+          if (valueData) console.log("depth", depth, amharicLetter, valueData);
+          amharicLetter += valueData;
           break;
         }
-
-        amharicLetter += words[fetchingLetter];
       }
     } else if (" " === fetchingLetter) {
       amharicLetter += " ";
@@ -71,6 +101,8 @@ export function translateToAmharic(text: string): { en: string; am: string } {
       const data = words[fetchingLetter];
       if (data) amharicLetter += data;
     }
+
+    amharicLetterCount = amharicLetter.length;
     i++;
   }
   return {
